@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { Mail, MessageCircle, Sparkles, Loader2, ShieldCheck } from "lucide-react";
 import { SITE, whatsappLink } from "@/config/site";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = `${process.env.REACT_APP_BACKEND_URL}`;
 
 
 export default function Contact() {

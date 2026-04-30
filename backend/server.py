@@ -9,12 +9,13 @@ from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
-import smtplib
-from email.mime.text import MIMEText
-
-
+import resend
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
+
+resend.api_key = os.getenv("RESEND_API_KEY")
+
+
 
 # =====================
 # ENV VARIABLES
@@ -24,8 +25,6 @@ db_name = os.environ['DB_NAME']
 
 EMAIL_USER = os.environ.get("EMAIL_USER")
 EMAIL_PASS = os.environ.get("EMAIL_PASS")
-SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.hostinger.com")
-SMTP_PORT = int(os.environ.get("SMTP_PORT", 465))
 
 
 # =====================
@@ -57,15 +56,12 @@ logger = logging.getLogger(__name__)
 # =====================
 def send_email(to_email: str, subject: str, html_content: str):
     try:
-        msg = MIMEText(html_content, "html")
-        msg["Subject"] = subject
-        msg["From"] = f"Webfoot <{EMAIL_USER}>"
-        msg["To"] = to_email
-
-        with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT) as server:
-            server.login(EMAIL_USER, EMAIL_PASS)
-            server.send_message(msg)
-
+        resend.Emails.send({
+            "from": os.getenv("FROM_EMAIL"),
+            "to": [to_email],
+            "subject": subject,
+            "html": html_content,
+        })
     except Exception:
         logger.exception("Email sending failed")
 
@@ -202,7 +198,7 @@ async def create_lead(payload: LeadCreate, background_tasks: BackgroundTasks):
     # =====================
     background_tasks.add_task(
         send_email,
-        EMAIL_USER,
+        os.getenv("FROM_EMAIL"),
         "New Webfoot Lead",
         f"""
         <h3>New Lead Received</h3>
