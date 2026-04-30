@@ -57,7 +57,7 @@ logger = logging.getLogger(__name__)
 def send_email(to_email: str, subject: str, html_content: str):
     try:
         resend.Emails.send({
-            "from": os.getenv("FROM_EMAIL"),
+            "from": f"Webfoot <{os.getenv('FROM_EMAIL')}>",
             "to": [to_email],
             "subject": subject,
             "html": html_content,
@@ -147,42 +147,42 @@ async def create_lead(payload: LeadCreate, background_tasks: BackgroundTasks):
         lead.email,
         "Your Webfoot request is in — we’re working on it",
         f"""
-        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #222;">
-            
-            <h2 style="margin-bottom: 10px;">Hi {lead.name},</h2>
+        <div style="font-family: Arial, sans-serif; color: #222; max-width: 600px; margin: auto;">
 
-            <p>Thanks for reaching out to <strong>Webfoot</strong>.</p>
+            <h2 style="margin-bottom: 8px;">Hi {lead.name},</h2>
 
-            <p>
-                We've received your request and we're already reviewing your requirements.
-                Our goal is to craft something that doesn't just look good—but actually
-                helps your business grow online.
+            <p style="margin-top: 0;">
+                Thanks for reaching out to <strong>Webfoot</strong>.
             </p>
 
-            <br/>
+            <p>
+                We've received your request and are reviewing your requirements.
+                Our goal is to build something that doesn't just look good —
+                but actually helps your business grow.
+            </p>
 
-            <div style="background: #f5f7fa; padding: 15px; border-radius: 8px;">
-                <p style="margin: 0;"><strong>Your submission:</strong></p>
-                <p style="margin: 5px 0;"><b>Business Type:</b> {lead.business_type or 'Not specified'}</p>
+            <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;" />
+
+            <h3 style="margin-bottom: 10px;">Your submission</h3>
+
+            <div style="background: #f5f7fa; padding: 12px; border-radius: 6px;">
+                <p style="margin: 5px 0;"><b>Business:</b> {lead.business_type or 'Not specified'}</p>
                 <p style="margin: 5px 0;"><b>Message:</b> {lead.message}</p>
             </div>
 
-            <br/>
+            <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;" />
 
-            <p><strong>What happens next?</strong></p>
-            <ul>
+            <h3 style="margin-bottom: 10px;">What happens next?</h3>
+
+            <ul style="padding-left: 18px;">
                 <li>We review your requirements</li>
-                <li>Prepare tailored website ideas</li>
+                <li>Prepare tailored ideas</li>
                 <li>Reach out within <strong>24 hours</strong></li>
             </ul>
 
-            <br/>
-
             <p>
-                If there's anything you'd like to add or clarify, just reply to this email.
+                If you'd like to add anything, just reply to this email.
             </p>
-
-            <br/>
 
             <p style="margin-top: 20px;">
                 — Team Webfoot<br/>
