@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "mode": "offline PNG-authoritative static comparison",
+  "sourceFiles": {
+    "guide": "scripts/strand-geometry-proof/source/option-2-guide.png",
+    "guideSha256": "3574f64ee01802f12c2a1d9f0f4122b8679bf8cb3a04dd94d172a8e5fd8d4c24",
+    "anatomyZones": "scripts/strand-geometry-proof/source/locked-anatomy.svg",
+    "anatomyZonesSha256": "4ab10fe620fb2f89cc53cd98dcf6a2134e15b1f3ed0cd4bb6f092c9aab9092a4"
+  },
+  "generation": {
+    "workingDomain": "PNG luminance/ridge support",
+    "orientation": "PNG structure-tensor tangent field",
+    "seeds": "PNG ridge response only",
+    "geometryPermission": "PNG-derived support mask only",
+    "svgRole": "post-seed sole and five-toe zone labels only",
+    "svgClipping": false,
+    "svgBoundarySeeds": false,
+    "svgDrivenCurveParameters": false,
+    "manualToeReshaping": false,
+    "runtimeRenderingPerformed": false,
+    "alignmentForLabels": {
+      "centerX": 309,
+      "centerY": 371.530091,
+      "scaleX": 0.614279,
+      "scaleY": 0.855843,
+      "rotationDegrees": -1.879514,
+      "score": 0.466798
+    }
+  },
+  "domain": {
+    "dimensions": [
+      512,
+      768
+    ],
+    "thresholds": {
+      "intensity": 0.015,
+      "ridge": 0.01,
+      "coherentDensity": 0.0095,
+      "coherentDensityMinimum": 0.18,
+      "dilationPixels": 1
+    },
+    "corePixels": 220356,
+    "permittedPixels": 290873,
+    "permittedCoverage": 0.739728,
+    "maximumSupport": 1,
+    "ridgeSeedThreshold": 0.011725,
+    "maximumRidgeResponse": 0.977081
+  },
+  "counts": {
+    "curves": 1250,
+    "byZoneLabel": {
+      "sole": 294,
+      "toe-1": 65,
+      "toe-2": 31,
+      "toe-3": 26,
+      "toe-4": 22,
+      "toe-5": 22,
+      "wake": 790
+    },
+    "candidates": {
+      "total": 151829,
+      "byZone": {
+        "sole": 24759,
+        "toe-1": 4679,
+        "toe-2": 2766,
+        "toe-3": 1915,
+        "toe-4": 1353,
+        "toe-5": 1062,
+        "wake": 115295
+      }
+    },
+    "points": 26158,
+    "segments": 24908,
+    "closedLike": 0
+  },
+  "comparison": {
+    "layout": "reference left, extracted geometry right",
+    "panelDimensions": [
+      512,
+      768
+    ],
+    "equalScale": true,
+    "outputDimensions": [
+      1032,
+      768
+    ]
+  },
+  "validation": {
+    "pngAuthoritativeDomain": true,
+    "svgUsedForLabelsOnly": true,
+    "runtimeRenderingSkipped": true,
+    "minimumStaticCurveCount": true,
+    "allSixAnatomyLabelsPresent": true,
+    "noSealedLoops": true,
+    "finiteCoordinates": true,
+    "normalizedCoordinates": true,
+    "approvedCurveCountLocked": true,
+    "approvedPointCountLocked": true,
+    "approvedTraceHashLocked": true
+  }
+}
